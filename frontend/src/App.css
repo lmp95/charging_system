@@ -8,7 +8,38 @@
   height: calc(100vh - 64px);
 }
 .main.opened{
-  margin-left: 240px;
-  width: calc(100% - 240px);
+  margin-left: 264px;
+  width: calc(100% - 286px);
   transition: width 225ms;
+}
+.grid-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-fields-container{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+.form-fields-container .form-text-field{
+  margin: 12px 0px;
+}
+.dialog-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.loader{
+  animation: spin 2s linear infinite;
+  display: block;
+  margin: auto;
+}
+@keyframes spin {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }

@@ -2,7 +2,6 @@ import "./App.css";
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
   Toolbar,
   Typography,
@@ -22,7 +21,7 @@ function App() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar component="nav" position="fixed" className={open && "open"}>
+      <AppBar component="nav" position="fixed" className={open ? "open" : ''}>
         <Toolbar>
           <IconButton
             size="large"
@@ -42,7 +41,7 @@ function App() {
         </Toolbar>
       </AppBar>
       <DrawerComponent open={open} openDrawer={openDrawer} />
-      <div className={`main ${open && "opened"}`}>
+      <div className={`main ${open ? "opened" : ''}`}>
         <AppRoute />
       </div>
     </Box>

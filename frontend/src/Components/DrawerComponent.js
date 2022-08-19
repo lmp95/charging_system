@@ -1,7 +1,6 @@
 import React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -22,12 +21,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 function DrawerComponent(props) {
   const drawerWidth = 240;
-  const theme = useTheme();
-  // const [open, setOpen] = React.useState(false);
-
-  const handleDrawerClose = () => {
-    props.openDrawer();
-  };
 
   return (
     <Drawer
