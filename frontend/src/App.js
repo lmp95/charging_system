@@ -1,11 +1,5 @@
 import "./App.css";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import { MdMenu } from "react-icons/md";
 import DrawerComponent from "./Components/DrawerComponent";
 import { useState } from "react";
@@ -14,14 +8,14 @@ import { Link } from "react-router-dom";
 
 function App() {
   const [open, setOpen] = useState(false);
-
+  console.log(`http://localhost:${process.env.REACT_APP_PORT}/v1`);
   const openDrawer = () => {
     open ? setOpen(false) : setOpen(true);
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar component="nav" position="fixed" className={open ? "open" : ''}>
+      <AppBar component="nav" position="fixed" className={open ? "open" : ""}>
         <Toolbar>
           <IconButton
             size="large"
@@ -41,7 +35,7 @@ function App() {
         </Toolbar>
       </AppBar>
       <DrawerComponent open={open} openDrawer={openDrawer} />
-      <div className={`main ${open ? "opened" : ''}`}>
+      <div className={`main ${open ? "opened" : ""}`}>
         <AppRoute />
       </div>
     </Box>

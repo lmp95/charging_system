@@ -23,7 +23,13 @@ function StationList() {
         if (response.data.length > 0) {
           const obj = Object.keys(response.data[0]);
           setColumns(
-            generateColumn(obj, setSelectedData, setDialog, setAlertDialog)
+            generateColumn(
+              obj,
+              setSelectedData,
+              setDialog,
+              setAlertDialog,
+              setLoading
+            )
           );
         }
         setLoading(false);

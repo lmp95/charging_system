@@ -1,12 +1,13 @@
 FROM node:16
 
-WORKDIR /usr/src/app
+WORKDIR /backend
 
-COPY package*.json ./
+COPY package.json ./
+COPY tsconfig.json ./
 
 RUN npm install
 
 COPY . .
 
 EXPOSE 3030
-CMD [ "node", "app.js" ]
+CMD npm run dev

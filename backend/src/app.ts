@@ -2,15 +2,24 @@ import express from 'express';
 import routes from './Routes';
 import mongoose from 'mongoose';
 import cors from 'cors';
+require("dotenv").config();
+const {
+    DB_USER,
+    DB_PASSWORD,
+    DB_HOST,
+    DB_PORT,
+    DB_NAME,
+  } = process.env;
 
 const app = express();
 const port = 3600;
 
+// const mongoDB = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`;
 const mongoDB = 'mongodb://127.0.0.1/charging_system';
 mongoose.connect(mongoDB).then(() => {
     console.log('Connected to MongoDB');
 }).catch((error) => {
-    console.log('Failed to connect MongoDB');
+    console.log('Failed to connect MongoDB', error);
 });
 
 app.use(express.json());
