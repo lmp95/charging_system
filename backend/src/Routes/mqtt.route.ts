@@ -1,15 +1,10 @@
 import express from 'express';
-import MqttHandler from '../middlewares/mqtt-service';
+import { mqttController } from '../controllers';
 
 const router = express.Router();
-var mqttClient = new MqttHandler();
-mqttClient.connect();
 
 router
     .route('/')
-    .get(function (req, res, next) {
-        mqttClient.sendMessage(req.body.message);
-        res.status(200).send("Message sent to mqtt");
-    });
+    .post(mqttController.sendMessage);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 export interface StationInterface {
   stationName: string;
-  stationCode: string;
-  channel: number;
+  stationCode: number;
+  channel: string;
   status: string,
   createdDate: Date,
   updatedDate: Date

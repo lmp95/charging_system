@@ -1,4 +1,5 @@
 import { ObjectId } from "mongoose";
+import { MessageInterface } from "../interfaces/message.interface";
 import { StationInterface } from "../interfaces/station.interface";
 import { Station } from "../models";
 
@@ -27,6 +28,15 @@ const createStation = async (data: StationInterface): Promise<StationInterface> 
  */
 const getStationById = async (stationId: string) => {
     return Station.findById(stationId);
+};
+
+/**
+ * Update station status by stationCode
+ * @param {number} stationCode
+ * @returns {Promise<StationInterface>}
+ */
+const updateStationStatusByStationCode = async (message: MessageInterface) => {
+    return Station.findOneAndUpdate({stationCode: message.stationCode}, {status: message.status});
 };
 
 /**
@@ -60,5 +70,6 @@ export const StationService = {
     getStations,
     createStation,
     updateStation,
-    deleteStationById
+    deleteStationById,
+    updateStationStatusByStationCode
 };

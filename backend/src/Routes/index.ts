@@ -10,7 +10,7 @@ const defaultRoutes = [
         route: stationRoute,
     },
     {
-        path: '/mqtt',
+        path: '/message',
         route: mqttRoute,
     },
 ];

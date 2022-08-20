@@ -1,4 +1,5 @@
 import mqtt from 'mqtt';
+import { messageService } from '../services';
 
 class MqttHandler {
   mqttClient: any;
@@ -29,8 +30,8 @@ class MqttHandler {
     this.mqttClient.subscribe('station-status');
 
     // When a message arrives, console.log it
-    this.mqttClient.on('message', function (topic, message) {
-      console.log(message.toString());
+    this.mqttClient.on('message', function (topic: string, message: string) {
+      messageService.updateStationStatus(JSON.parse(message));
     });
 
     this.mqttClient.on('close', () => {
