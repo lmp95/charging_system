@@ -2,6 +2,8 @@ import express from 'express';
 import routes from './Routes';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import swaggerUI from 'swagger-ui-express';
+import { document } from './docs/apiDoc';
 require("dotenv").config();
 const {
     DB_USER,
@@ -29,6 +31,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/v1', routes);
+app.use('/document', swaggerUI.serve,swaggerUI.setup(document));
 
 app.listen(port, () => {
     console.log(`Application is running on port ${port}.`);
