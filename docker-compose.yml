@@ -5,11 +5,11 @@ services:
       restart: unless-stopped
       env_file: ./.env
       environment:
-        - MONGO_INITDB_ROOT_USERNAME=root
-        - MONGO_INITDB_ROOT_PASSWORD=123456
-        - MONGO_INITDB_DATABASE=charging_system
+        - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
+        - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+        - MONGO_INITDB_DATABASE=$MONGODB_DATABASE
       ports:
-        - 7017:27017
+        - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
       volumes:
         - db:/data/db
     backend:
