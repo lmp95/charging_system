@@ -43,3 +43,6 @@
     transform: rotate(360deg);
   }
 }
+.grid-container{
+  padding: 24px 0px;
+}

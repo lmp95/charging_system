@@ -83,4 +83,5 @@ export const StationService = {
   updateStation,
   deleteStationById,
   updateStationStatusByStationCode,
+  getStationById,
 };

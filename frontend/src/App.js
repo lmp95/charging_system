@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 function App() {
   const [open, setOpen] = useState(false);
-  console.log(`http://localhost:${process.env.REACT_APP_PORT}/v1`);
+
   const openDrawer = () => {
     open ? setOpen(false) : setOpen(true);
   };

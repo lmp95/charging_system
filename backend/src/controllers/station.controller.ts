@@ -1,5 +1,5 @@
-import { stationService } from '../services';
-import { Request, Response } from 'express';
+import { stationService } from "../services";
+import { Request, Response } from "express";
 
 const getStations = async (req: Request, res: Response) => {
   const result = await stationService.getStations();
@@ -13,6 +13,11 @@ const createStation = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(400).send({ message: "Fail to create" });
   }
+};
+
+const getStationById = async (req: Request, res: Response) => {
+  const station = await stationService.getStationById(req.params.stationId);
+  res.send(station);
 };
 
 const updateStation = async (req: Request, res: Response) => {
@@ -29,5 +34,6 @@ export const StationController = {
   getStations,
   createStation,
   updateStation,
-  deleteStation
+  deleteStation,
+  getStationById,
 };

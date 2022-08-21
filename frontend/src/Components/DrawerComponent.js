@@ -7,7 +7,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { MdEvStation } from "react-icons/md";
+import { MdDoorBack, MdEvStation } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -50,6 +50,17 @@ function DrawerComponent(props) {
           </ListItem>
         </Link>
       </List>
+      <Divider />
+      <Link to="/stations" key="virtualStations">
+        <ListItem key={"stations"} disablePadding>
+          <ListItemButton>
+            <ListItemIcon>
+              <MdDoorBack />
+            </ListItemIcon>
+            <ListItemText primary={"Virtual Stations"} />
+          </ListItemButton>
+        </ListItem>
+      </Link>
     </Drawer>
   );
 }
