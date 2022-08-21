@@ -8,7 +8,7 @@ import { Station } from "../models";
  * @returns {Promise<StationInterface[]>}
  */
 const getStations = async (): Promise<StationInterface[]> => {
-    return await Station.find();
+  return await Station.find();
 };
 
 /**
@@ -16,9 +16,11 @@ const getStations = async (): Promise<StationInterface[]> => {
  * @param {StationInterface} data
  * @returns {Promise<StationInterface>}
  */
-const createStation = async (data: StationInterface): Promise<StationInterface> => {
-    data = { ...data, createdDate: new Date(), updatedDate: new Date() }
-    return Station.create(data);
+const createStation = async (
+  data: StationInterface
+): Promise<StationInterface> => {
+  data = { ...data, createdDate: new Date(), updatedDate: new Date() };
+  return Station.create(data);
 };
 
 /**
@@ -27,7 +29,7 @@ const createStation = async (data: StationInterface): Promise<StationInterface> 
  * @returns {Promise<StationInterface>}
  */
 const getStationById = async (stationId: string) => {
-    return Station.findById(stationId);
+  return await Station.findById(stationId);
 };
 
 /**
@@ -36,7 +38,10 @@ const getStationById = async (stationId: string) => {
  * @returns {Promise<StationInterface>}
  */
 const updateStationStatusByStationCode = async (message: MessageInterface) => {
-    return Station.findOneAndUpdate({stationCode: message.stationCode}, {status: message.status});
+  return await Station.findOneAndUpdate(
+    { stationCode: message.stationCode },
+    { status: message.status }
+  );
 };
 
 /**
@@ -44,12 +49,18 @@ const updateStationStatusByStationCode = async (message: MessageInterface) => {
  * @param {StationInterface} data
  * @returns {Promise<StationInterface>}
  */
-const updateStation = async (stationId: string, data: StationInterface): Promise<StationInterface> => {
-    const station = await getStationById(stationId);
-    if (station) {
-        const updatedStation = Station.findOneAndUpdate({ _id: station.id }, data);
-        return updatedStation;
-    }
+const updateStation = async (
+  stationId: string,
+  data: StationInterface
+): Promise<StationInterface> => {
+  const station = await getStationById(stationId);
+  if (station) {
+    const updatedStation = await Station.findOneAndUpdate(
+      { _id: station.id },
+      data
+    );
+    return updatedStation;
+  }
 };
 
 /**
@@ -58,18 +69,18 @@ const updateStation = async (stationId: string, data: StationInterface): Promise
  * @returns {Promise<User>}
  */
 const deleteStationById = async (stationId: string) => {
-    const station = await getStationById(stationId);
-    if (!station) {
-        console.log("delete fail");
-    }
-    await station.remove();
-    return station;
+  const station = await getStationById(stationId);
+  if (!station) {
+    console.log("delete fail");
+  }
+  await station.remove();
+  return station;
 };
 
 export const StationService = {
-    getStations,
-    createStation,
-    updateStation,
-    deleteStationById,
-    updateStationStatusByStationCode
+  getStations,
+  createStation,
+  updateStation,
+  deleteStationById,
+  updateStationStatusByStationCode,
 };
